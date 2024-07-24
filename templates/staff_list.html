@@ -1,0 +1,30 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<h1>Staff Management</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Permissions</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for staff in staff_members %}
+        <tr>
+            <td>{{ staff.id }}</td>
+            <td>{{ staff.user.username }}</td>
+            <td>{{ staff.role }}</td>
+            <td>{{ staff.permissions }}</td>
+            <td>
+                <!-- Add action buttons for editing, deleting, etc. -->
+                <a href="#" class="btn btn-primary btn-sm">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

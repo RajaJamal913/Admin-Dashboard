@@ -1,0 +1,42 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<h1>User Management</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Balance</th>
+            <th>Spent Amount</th>
+            <th>Status</th>
+            <th>Created Date</th>
+            <th>Last Login</th>
+            <th>Discount</th>
+            <th>Rates</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for obj in users %}
+        <tr>
+            <td>{{ obj.id }}</td>
+            <td>{{ obj.user.username }}</td>
+            <td>{{ obj.user.email }}</td>
+            <td>${{obj.balance }}</td>
+            <td>${{ obj.spent_amount }}</td>
+            <td>{{ obj.status }}</td>
+            <td>{{ obj.created_date }}</td>
+            <td>{{ obj.last_login }}</td>
+            <td>{{ obj.discount }}%</td>
+            <td>{{ obj.rates }}</td>
+            <td>
+                <!-- Add action buttons for editing, suspending, etc. -->
+                <a href="#" class="btn btn-primary btn-sm">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

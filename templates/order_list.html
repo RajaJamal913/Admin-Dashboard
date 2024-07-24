@@ -1,0 +1,38 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<h1>Order Management</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Domain</th>
+            <th>Expiry Date</th>
+            <th>Created Date</th>
+            <th>Plan</th>
+            <th>Orders per Month</th>
+            <th>User History</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.user.username }}</td>
+            <td>{{ order.domain }}</td>
+            <td>{{ order.expiry_date }}</td>
+            <td>{{ order.created_date }}</td>
+            <td>{{ order.plan }}</td>
+            <td>{{ order.orders_per_month }}</td>
+            <td>{{ order.user_history }}</td>
+            <td>
+                <!-- Add action buttons for editing, changing payment settings, etc. -->
+                <a href="#" class="btn btn-primary btn-sm">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

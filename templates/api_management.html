@@ -1,0 +1,56 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h1>API Management</h1>
+            <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addAPIModal">Add Duplicate API</button>
+            <div class="row">
+                {% for api in api_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">API {{ forloop.counter }}</h5>
+                            <p class="card-text">Domain: {{ api.domain }}</p>
+                            <p class="card-text">Status: {{ api.status }}</p>
+                            {% if api.status == "Active" %}
+                                <button class="btn btn-secondary">Deactivate</button>
+                            {% else %}
+                                <button class="btn btn-secondary">Activate</button>
+                            {% endif %}
+                            <button class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for adding a duplicate API -->
+<div class="modal fade" id="addAPIModal" tabindex="-1" role="dialog" aria-labelledby="addAPIModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addAPIModalLabel">Add Duplicate API</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form content for adding API -->
+                <form>
+                    <div class="form-group">
+                        <label for="apiDomain">API Domain</label>
+                        <input type="text" class="form-control" id="apiDomain" placeholder="Enter API domain">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add API</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
